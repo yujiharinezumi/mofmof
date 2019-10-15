@@ -12,8 +12,15 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.create(apartment_params)
-
-    redirect_to apartments_path
+    if params[:back]
+      render :new
+    else
+      if @apartment.save
+        redirect_to apartments_path, notice:"物件を登録しました。"
+      else
+        render :new
+      end
+    end
   end
 
   def show
@@ -35,6 +42,11 @@ class ApartmentsController < ApplicationController
   def destroy
     @apartment.destroy
     redirect_to apartments_path, notice:"物件を削除しました！"
+  end
+
+  def confirm
+    @apartment = Apartment.new(apartment_params)
+    render :new if @apartment.invalid?
   end
 
   private
