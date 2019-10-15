@@ -1,2 +1,21 @@
-<h1>Apartments#index</h1>
-<p>Find me in app/views/apartments/index.html.erb</p>
+<h1> 物件一覧</h1>
+
+<table>
+  <tr>
+    <th>物件名</th>
+    <th>賃料</th>
+    <th>住所</th>
+    <th>築年数</th>
+    <th>備考</th>
+  </tr>
+
+<% @apartments.each do |apa| %>
+  <tr>
+    <td><%= apa.name %></td>
+    <td><%= apa.price %></td>
+    <td><%= apa.address %></td>
+    <td><%= apa.year %></td>
+    <td><%= apa.note %></td>
+  </tr>
+<% end %>
+</table>
