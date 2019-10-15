@@ -1,24 +1,3 @@
-<%= form_for(@apartment) do |form| %>
-<div class="apartment_name">
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-</div>
-<div class="apartment_price">
-  <%= form.label :price %>
-  <%= form.text_field :price %>
-</div>
-<div class="apartment_address">
-  <%= form.label :address %>
-  <%= form.text_field :address %>
-</div>
-<div class="apartment_year">
-  <%= form.label :year %>
-  <%= form.text_field :year %>
-</div>
-<div class="apartment_note">
-  <%= form.label :note %>
-  <%= form.text_field :note %>
-</div>
+<h2>物件を登録する</h2>
 
-<%= form.submit %>
-<% end %>
+<%= render 'form' %>

@@ -1,0 +1,39 @@
+<%= form_for(@apartment) do |form| %>
+
+<% if @apartment.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= @apartment.errors.count %>件のエラーがあります。</h2>
+     <ul>
+
+     <% @apartment.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+<div class="apartment_name">
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+<div class="apartment_price">
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+</div>
+<div class="apartment_address">
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+</div>
+<div class="apartment_year">
+  <%= form.label :year %>
+  <%= form.text_field :year %>
+</div>
+<div class="apartment_note">
+  <%= form.label :note %>
+  <%= form.text_field :note %>
+</div>
+
+<%= form.submit %>
+<% end %>
+
+<%= link_to "物件一覧画面にもどる", apartments_path %>

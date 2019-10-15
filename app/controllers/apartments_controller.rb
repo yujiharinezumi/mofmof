@@ -1,4 +1,5 @@
 class ApartmentsController < ApplicationController
+  before_action :set_apartment, only: [:show, :edit, :update, :destroy]
   def index
     @apartments = Apartment.all
   end
@@ -16,15 +17,14 @@ class ApartmentsController < ApplicationController
   end
 
   def show
-    @apartment = Apartment.find(params[:id])
+
   end
 
   def edit
-    @apartment = Apartment.find(params[:id])
+
   end
 
   def update
-    @apartment = Apartment.find(params[:id])
     if @apartment.update(apartment_params)
       redirect_to apartment_path, notice: "物件を編集しました！"
     else
@@ -32,10 +32,19 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @apartment.destroy
+    redirect_to apartments_path, notice:"物件を削除しました！"
+  end
+
   private
 
 
   def apartment_params
     params.require(:apartment).permit(:name,:price,:address,:year,:note)
+  end
+
+  def set_apartment
+    @apartment = Apartment.find(params[:id])
   end
 end
