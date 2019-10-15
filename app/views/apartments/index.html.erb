@@ -16,6 +16,10 @@
     <td><%= apa.address %></td>
     <td><%= apa.year %></td>
     <td><%= apa.note %></td>
+
+    <td><%= link_to '詳細を確認する', apartment_path(apa.id) %></td>
   </tr>
 <% end %>
 </table>
+
+<%= link_to '物件を登録する', new_apartment_path %>
