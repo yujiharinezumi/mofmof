@@ -18,6 +18,7 @@
     <td><%= apa.note %></td>
 
     <td><%= link_to '詳細を確認する', apartment_path(apa.id) %></td>
+    <td><%= link_to "物件を編集する", edit_apartment_path(apa.id) %></td>
   </tr>
 <% end %>
 </table>

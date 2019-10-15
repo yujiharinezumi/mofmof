@@ -20,6 +20,16 @@ class ApartmentsController < ApplicationController
   end
 
   def edit
+    @apartment = Apartment.find(params[:id])
+  end
+
+  def update
+    @apartment = Apartment.find(params[:id])
+    if @apartment.update(apartment_params)
+      redirect_to apartment_path, notice: "物件を編集しました！"
+    else
+      render :edit
+    end
   end
 
   private

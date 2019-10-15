@@ -1,2 +1,24 @@
-<h1>Apartments#edit</h1>
-<p>Find me in app/views/apartments/edit.html.erb</p>
+<%= form_for(@apartment) do |form| %>
+<div class="apartment_name">
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+<div class="apartment_price">
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+</div>
+<div class="apartment_address">
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+</div>
+<div class="apartment_year">
+  <%= form.label :year %>
+  <%= form.text_field :year %>
+</div>
+<div class="apartment_note">
+  <%= form.label :note %>
+  <%= form.text_field :note %>
+</div>
+
+<%= form.submit %>
+<% end %>
