@@ -6,7 +6,7 @@ class ApartmentsController < ApplicationController
 
   def new
     @apartment = Apartment.new
-    2.times {@apartment.trains.new}
+    5.times {@apartment.trains.new}
   end
 
   def create
