@@ -6,29 +6,23 @@ class ApartmentsController < ApplicationController
 
   def new
     @apartment = Apartment.new
-
-
+    2.times {@apartment.trains.new}
   end
 
   def create
-    @apartment = Apartment.create(apartment_params)
-    if params[:back]
-      render :new
-    else
+    @apartment = Apartment.new(apartment_params)
       if @apartment.save
         redirect_to apartments_path, notice:"物件を登録しました。"
       else
         render :new
       end
-    end
   end
 
   def show
-
   end
 
   def edit
-
+    
   end
 
   def update
@@ -44,16 +38,11 @@ class ApartmentsController < ApplicationController
     redirect_to apartments_path, notice:"物件を削除しました！"
   end
 
-  def confirm
-    @apartment = Apartment.new(apartment_params)
-    render :new if @apartment.invalid?
-  end
-
   private
 
 
   def apartment_params
-    params.require(:apartment).permit(:name,:price,:address,:year,:note)
+    params.require(:apartment).permit(:name,:price,:address,:year,:note,trains_attributes: [:id,:line,:station,:distance] )
   end
 
   def set_apartment
