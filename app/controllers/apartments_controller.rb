@@ -22,7 +22,7 @@ class ApartmentsController < ApplicationController
   end
 
   def edit
-    
+    1.times {@apartment.trains.new}
   end
 
   def update
