@@ -1,0 +1,29 @@
+<h1> 物件一覧</h1>
+
+<p><%= notice %></p>
+
+<table>
+  <tr>
+    <th>物件名</th>
+    <th>賃料</th>
+    <th>住所</th>
+    <th>築年数</th>
+    <th>備考</th>
+  </tr>
+
+<% @apartments.each do |apa| %>
+  <tr>
+    <td><%= apa.name %></td>
+    <td><%= apa.price %></td>
+    <td><%= apa.address %></td>
+    <td><%= apa.year %></td>
+    <td><%= apa.note %></td>
+
+    <td><%= link_to '詳細を確認する', apartment_path(apa.id) %></td>
+    <td><%= link_to "物件を編集する", edit_apartment_path(apa.id) %></td>
+    <td><%= link_to '物件を削除する', apartment_path(apa.id), method: :delete,data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '物件を登録する', new_apartment_path %>

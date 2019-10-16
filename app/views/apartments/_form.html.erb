@@ -1,0 +1,60 @@
+<%= form_for(@apartment) do |f| %>
+
+<% if @apartment.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= @apartment.errors.count %>件のエラーがあります。</h2>
+     <ul>
+
+     <% @apartment.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+<div class="apartment_name">
+  <%= f.label "物件名" %>
+  <%= f.text_field :name %>
+</div>
+<div class="apartment_price">
+  <%= f.label "賃料" %>
+  <%= f.text_field :price %>円
+</div>
+<div class="apartment_address">
+  <%= f.label "住所" %>
+  <%= f.text_field :address %>
+</div>
+<div class="apartment_year">
+  <%= f.label "築年数" %>
+  <%= f.text_field :year %>年
+</div>
+<div class="apartment_note">
+  <%= f.label "備考" %>
+  <%= f.text_field :note %>
+</div>
+
+<hr>
+
+<%= f.fields_for :trains  do |m| %>
+<h2>最寄駅</h2>
+<div class="train_line">
+  <%= m.label "路線名" %>
+  <%= m.text_field :line %>
+</div>
+
+<div class="train_station">
+  <%= m.label "駅名" %>
+  <%= m.text_field :station %>
+</div>
+<div class="train_distance">
+  <%= m.label "徒歩分数" %>
+  <%= m.text_field :distance %>
+</div>
+
+
+<% end %>
+
+<%= f.submit %>
+<% end %>
+
+<%= link_to "物件一覧画面にもどる", apartments_path %>
